@@ -1,9 +1,9 @@
 @CHARSET "EUC-KR";
 
 .panel-default{
-		    color: #333;
-		    background-color: #f5f5f5;
-		    border-color: #ddd;
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
 }
 nav>.panel-group>.panel-default>a{
 	text-decoration:none;
@@ -19,6 +19,7 @@ nav>.panel-group{
 main .panel-group>.panel-primary{
 	height:auto;
 	min-height:220px;
+	margin: 10px;
 }
 main .panel-group{
 	/* margin-right:80px; */
@@ -65,9 +66,10 @@ footer{
 	position:absolute;
 	bottom:0;
 	left:0;
-	background:#ccc;
+	
 	margin:0 !important;
 	text-align: center;
+	border-top: 2px solid #d9edf7;
 }
 /* 애니메이션 */
 @-webkit-keyframes item-enter {
@@ -96,7 +98,7 @@ main .panel-group>.panel-primary{
 }
 
 /* ANIMATION */
-@-webkit-keyframes item-leave {
+/* @-webkit-keyframes item-leave {
     0% {
       opacity: 1;
       max-height: 1080px;
@@ -131,6 +133,21 @@ main .panel-group>.panel-primary-remove{
     animation-duration: 1s;
     -webkit-animation-name: item-leave;
     animation-name: item-leave;
+} */
+
+/* md */
+@media (max-width:992px){
+	#logo>img{
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		position:fixed;	
+	}
+	main .panel-group{
+		margin-right:40px;
+		margin-left:20px;
+		margin-top:150px;
+	}
 }
 /* 모바일 */
 @media (max-width:768px){
@@ -159,22 +176,5 @@ main .panel-group>.panel-primary-remove{
 		z-index: 1;
 		width: 100px;
 		height: 55px;
-	}
-}
-/* md */
-@media (max-width:992px){
-	#logo>img{
-		margin-left: auto;
-		margin-right: auto;
-		display: block;
-		position:fixed;	
-	}
-	main .panel-group{
-		margin-right:40px;
-		margin-left:20px;
-		margin-top:150px;
-	}
-	#logo>img{
-		display:none;
 	}
 }

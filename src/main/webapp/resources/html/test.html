@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load Charts and the corechart and barchart packages.
+      google.charts.load('current', {'packages':['corechart','line']});
+
+      // Draw the pie chart and bar chart when Charts is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+
+        var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
+                       width:400,
+                       height:300};
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        piechart.draw(data, piechart_options);
+
+        var barchart_options = {title:'Barchart: How Much Pizza I Ate Last Night',
+                       width:400,
+                       height:300,
+                       legend: 'none'};
+        var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+        barchart.draw(data, barchart_options);
+        
+        var options = {
+    	        chart: {
+    	          title: 'Box Office Earnings in First Two Weeks of Opening',
+    	          subtitle: 'in millions of dollars (USD)'
+    	        },
+    	        width: 900,
+    	        height: 500
+    	      };
+
+    	      $("#chartlist").append("<li></li>");	      
+    	      var chart = new google.charts.Line(document.querySelector("#chartlist li:last-child"));
+
+    	      chart.draw(data, options);
+    	      
+    	      
+        	  
+            var data = google.visualization.arrayToDataTable([
+            	["TIME","KOSPI"],
+                ['Mushrooms', 3],
+                ['Onions', 1],
+                ['Olives', 1],
+                ['Zucchini', 1],
+                ['Pepperoni', 2]
+              ]);
+
+            var options = {
+            	    title: 'Histogram',
+            	    legend: { position: 'none' },
+            	    colors: ['#e7711c'],
+            	    histogram: { lastBucketPercentile: 5 },
+            	    vAxis: { scaleType: 'mirrorLog' },
+            	    width: 900,
+        	        height: 500
+            	  };
+            
+            $("#chartlist").append("<li></li>");
+            var chart = new google.visualization.Histogram(document.querySelector("#chartlist li:last-child"));
+            chart.draw(data, options);
+      }
+</script>
+<body>
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+      <tr>
+        <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+    <div class="container">
+		<ul id="chartlist">
+			
+		</ul>
+	</div>
+  </body>
+</html>

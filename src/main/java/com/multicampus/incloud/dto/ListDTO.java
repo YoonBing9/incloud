@@ -1,14 +1,14 @@
-package com.multicampus.incloud.vo;
+package com.multicampus.incloud.dto;
 
 import java.util.List;
 
-public class ListVO {
+public class ListDTO {
 	private String part1;
 	private String part2;
 	private String start;
 	private String end;
 	private List<String> graph;	
-	private List<ListVO> ListVOList;
+	private List<ListDTO> ListVOList;
 	
 	public String getPart1() {
 		return part1;
@@ -40,10 +40,10 @@ public class ListVO {
 	public void setGraph(List<String> graph) {
 		this.graph = graph;
 	}
-	public List<ListVO> getListVOList() {
+	public List<ListDTO> getListVOList() {
 		return ListVOList;
 	}
-	public void setListVOList(List<ListVO> listVOList) {
+	public void setListVOList(List<ListDTO> listVOList) {
 		ListVOList = listVOList;
 	}
 	@Override

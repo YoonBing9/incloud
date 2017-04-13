@@ -18,9 +18,9 @@
 	<script type="text/javascript" src="/resources/bootstrap/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="/resources/bootstrap/js/bootstrap-datepicker.kr.js"></script>
 	<!--javascript-->
-    <script type="text/javascript" src="/resources/js/main.js"></script>
+    <script type="text/javascript" src="/resources/js/list.js"></script>
     <!--css-->
-    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/list.css">    
 </head>
 <body>
 	<div class="container">
@@ -29,7 +29,7 @@
 				<img class="img-responsive" src="/resources/images/incloud_logo.png" width=150px>
 			</div>
 		</header>
-		<section class="row">			
+		<section class="row">
 			<nav class="col-sm-3">
 				<div class="panel-group">
 				  <div class="panel panel-default">
@@ -40,9 +40,9 @@
 				  	</a>
 				    <div id="collapse1" class="panel-collapse collapse">
 				      <ul class="list-group">
-				        <a href="#" class="list-group-item" onclick="return false;">One</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="KOSPI" class="list-group-item" onclick="return false;">지표-KOSPI</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
 				      </ul>
 				    </div>
 				  </div>
@@ -55,9 +55,9 @@
 				  	</a>				    
 				    <div id="collapse2" class="panel-collapse collapse">
 				      <ul class="list-group">
-				        <a href="#" class="list-group-item" onclick="return false;">One</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">One</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
 				      </ul>
 				    </div>
 				  </div>
@@ -70,9 +70,9 @@
 				  	</a>				    
 				    <div id="collapse3" class="panel-collapse collapse">
 				      <ul class="list-group">
-				        <a href="#" class="list-group-item" onclick="return false;">One</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">One</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
 				      </ul>
 				    </div>
 				  </div>
@@ -85,9 +85,9 @@
 				  	</a>				    
 				    <div id="collapse4" class="panel-collapse collapse">
 				      <ul class="list-group">
-				        <a href="#" class="list-group-item" onclick="return false;">One</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">One</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
+				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
 				      </ul>
 				    </div>
 				  </div>
@@ -103,7 +103,7 @@
 			</main>
 		</section>
 		<footer class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-12">				
 				<h6>© Copyright 2017 Headlamp Creative  //  Hosted by MEDIA TEMPLE  //  Powered by EXPRESSION ENGINE</h6>
 			</div>
 		</footer>
