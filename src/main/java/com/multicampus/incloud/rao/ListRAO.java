@@ -2,7 +2,6 @@ package com.multicampus.incloud.rao;
 
 import java.util.ArrayList;
 
-import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPMismatchException;
 import org.rosuda.REngine.RList;
 import org.rosuda.REngine.Rserve.RConnection;
@@ -13,7 +12,6 @@ import com.multicampus.incloud.vo.ChartVO;
 
 public class ListRAO {
 	private RConnection con = null;
-	private REXP x = null;
 	
 	public ListRAO() throws RserveException {
 		this.con = new RConnection();
@@ -24,9 +22,12 @@ public class ListRAO {
 	
 	public ArrayList<ChartVO> getDatas(ListDTO dto) throws RserveException, REXPMismatchException {
 		ArrayList<ChartVO> datalist = new ArrayList<ChartVO>();
+		for(int i=0; i<dto.getListVOList().size(); i++) {
+			System.out.println(dto.getListVOList().get(i).toString());
+		}
 		for(int i=0; i<dto.getListVOList().size(); i++) {						
 			ListDTO tempDTO = dto.getListVOList().get(i);
-			if(tempDTO!=null) {
+			if(tempDTO.getPart2() != null) {
 				String[][] datas = null;
 				ChartVO vo = new ChartVO();
 				String query = "";
@@ -41,7 +42,48 @@ public class ListRAO {
 					from = "KOSPI";
 					where = "thetime >= '"+tempDTO.getStart()+"/01' and thetime <= '"+tempDTO.getEnd()+"/01' order by thetime ASC";
 					break;
+				case "TFWORDS" :
+					String part1 = "";
+					select = "id, word";
+					from = "TFWORDS";					
+					if(tempDTO.getPart1().equals("경제")) part1="11";
+					else if(tempDTO.getPart1().equals("정치")) part1="12";
+					else if(tempDTO.getPart1().equals("문화")) part1="13";
+					else if(tempDTO.getPart1().equals("IT")) part1="14";
+					where = "id like '"+part1+"%' and thetime = '"+tempDTO.getStart()+"/01'";
+					break;
+				case "LYRICS" :
+					select = "word, year, comp, freq";
+					from = "LYRICS";
+					where = "year >= '"+tempDTO.getStart()+"/01' and year <= '"+tempDTO.getEnd()+"/01'";
+					break;
+				case "ROEG" :
+					select = "year, rate";
+					from = "ROEG";
+					where = "year >= '"+tempDTO.getStart()+"/01' and year <= '"+tempDTO.getEnd()+"/01'";
+					break;
+				case "GPC" :
+					select = "year, GDP_per_capita";
+					from = "GPC";
+					where = "year >= '"+tempDTO.getStart()+"/01' and year <= '"+tempDTO.getEnd()+"/01'";
+					break;
+				case "UR" :
+					select = "year, rate, youth_rate";
+					from = "UR";
+					where = "year >= '"+tempDTO.getStart()+"/01' and year <= '"+tempDTO.getEnd()+"/01'";
+					break;
+				case "ROE" :
+					select = "year, rate";
+					from = "ROE";
+					where = "year >= '"+tempDTO.getStart()+"/01' and year <= '"+tempDTO.getEnd()+"/01'";
+					break;
+				case "BS" :
+					select = "year, a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u";
+					from = "BS";
+					where = "year >= '"+tempDTO.getStart()+"/01' and year <= '"+tempDTO.getEnd()+"/01'";
+					break;
 				}
+				
 				query = "select "+select+" from "+from+" where "+where;
 				con.assign("query", query);
 				con.eval("rs <- dbSendQuery(conn, query);");
@@ -63,6 +105,12 @@ public class ListRAO {
 					}
 					datas[j] = temp;
 				}
+				
+				/*for(int j=0; j<datas.length; j++) {
+					for(int h=0; h<datas[j].length; h++) {
+						System.out.print(datas[j][h]);
+					}System.out.println();
+				}*/
 				vo.setDatas(datas);
 				datalist.add(vo);
 			}

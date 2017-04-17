@@ -20,7 +20,10 @@ import com.multicampus.incloud.service.PostService;
 public class ListController {
 	
 	@RequestMapping(value="/list/post", method = RequestMethod.POST)
-	public String inputPost(ListDTO dto, Model model) throws RserveException, REXPMismatchException, JsonGenerationException, JsonMappingException, IOException {		
+	public String inputPost(ListDTO dto, Model model) throws RserveException, REXPMismatchException, JsonGenerationException, JsonMappingException, IOException {
+		for(ListDTO temp : dto.getListVOList()) {
+			System.out.println("temp:"+temp.toString());
+		}
 		PostService ps = new PostService();
 		ps.execute(dto, model);
 		return "result";

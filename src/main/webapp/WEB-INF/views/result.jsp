@@ -23,12 +23,17 @@
 </head>
 <body>
 	<%
-		ArrayList<ChartVO> datalist = (ArrayList<ChartVO>)request.getAttribute("datalist");		
-		for(int i=0; i<datalist.size(); i++) {
+		ArrayList<ChartVO> datalist = (ArrayList<ChartVO>)request.getAttribute("datalist");
+			for(int i=0; i<datalist.size(); i++) {
 			ChartVO vo = datalist.get(i);
-			List<String> charts = vo.getCharts();
+			List<String> charts = vo.getCharts();			
 			String[][] datas = vo.getDatas();
-			String part2 = vo.getPart2();
+			for(int j=0; j<datas.length; j++) {
+				for(int h=0; h<datas[j].length; h++) {
+					System.out.println(datas[j][h]);
+				}System.out.println();
+			}
+			String part2 = vo.getPart2();		
 			int cols = datas.length;
 			int rows = datas[0].length;
 	%>
@@ -42,38 +47,77 @@
 				for(int j=0; j<datas[e].length; j++) {
 			%>		
 				jsdatas[<%= e %>][<%= j %>] = "<%= datas[e][j] %>"; 
-			<%
-				}
+			<%			
+				}			
 			}
 			%>
 						
 			/* charts jsp -> js */
 			var jscharts = new Array();
-			<%
+			<%		
 				for(int j=0; j<charts.size(); j++) {
 			%>
 					jscharts[<%= j %>] = "<%= charts.get(j) %>";
-			<%
+			<%	
 				}
 			%>
 			
 			var part2 = "<%= part2 %>";
-			if(part2 == "KOSPI") {
+			switch(part2) {			
+			case "KOSPI" :
+			case "ROEG" :
+			case "GPC" :
+			case "ROE" :
+			case "UR" :
 				for(var i=0; i<jsdatas.length; i++) {
 					var strArray = jsdatas[i][0].split('-');
 					var year = strArray[0];
 					var month = strArray[1];
-					jsdatas[i][0] = new Date(year, month, 1);
-				}
+					jsdatas[i][0] = new Date(year, month-1);
+				}				
 				for(var i=0; i<jsdatas.length; i++) {
 					jsdatas[i][1] = Number(jsdatas[i][1]);
 				}
+				if(part2=="UR"){
+					for(var i=0; i<jsdatas.length; i++) {
+						jsdatas[i][2] = Number(jsdatas[i][2]);
+					}					
+				} 
+				break;
+			case "BS" :
+				for(var i=0; i<jsdatas.length; i++) {
+					for(var j=0; j<jsdatas[i].length; j++) {
+						if(j==0) {							
+							var strArray = jsdatas[i][0].split('-');
+							jsdatas[i][0] = strArray[0];
+						} else {
+							jsdatas[i][j] = Number(jsdatas[i][j]);
+						}
+					}
+					
+				}
+				break;
+			case "LYRICS" :
+				for(var i=0; i<jsdatas.length; i++) {
+					var strArray = jsdatas[i][1].split('-');
+					var year = strArray[0];
+					var month = strArray[1];
+					jsdatas[i][1] = new Date(year, month-1);
+					jsdatas[i][2] = Number(jsdatas[i][2]);
+					jsdatas[i][3] = Number(jsdatas[i][3]);
+				}	
+				break;
+			}
+			$.getScript("/resources/js/drawCharts.js");
+			for(var i in jsdatas) {
+				for(var j in jsdatas[i]){
+					console.log(jsdatas[i][j]);
+				}
 			}
 			
-			$.getScript("/resources/js/drawCharts.js");
 			
 		</script>
-	<%			
+	<%		
 		}
 	%>	
 	

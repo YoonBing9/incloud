@@ -41,8 +41,11 @@
 				    <div id="collapse1" class="panel-collapse collapse">
 				      <ul class="list-group">
 				        <a href="#" id="KOSPI" class="list-group-item" onclick="return false;">지표-KOSPI</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="ROEG" class="list-group-item" onclick="return false;">경제성장률</a>
+				        <a href="#" id="GPC" class="list-group-item" onclick="return false;">GDP per capita</a>
+				        <a href="#" id="UR" class="list-group-item" onclick="return false;">실업률</a>
+				        <a href="#" id="ROE" class="list-group-item" onclick="return false;">환율</a>
+				        <a href="#" id="TFWORDS" class="list-group-item" onclick="return false;">News</a>
 				      </ul>
 				    </div>
 				  </div>
@@ -55,9 +58,9 @@
 				  	</a>				    
 				    <div id="collapse2" class="panel-collapse collapse">
 				      <ul class="list-group">
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">One</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="LYRICS" class="list-group-item" onclick="return false;">Lyrics</a>
+				        <a href="#" id="BS" class="list-group-item" onclick="return false;">Best seller</a>
+				        <a href="#" id="TFWORDS" class="list-group-item" onclick="return false;">Global</a>
 				      </ul>
 				    </div>
 				  </div>
@@ -70,9 +73,7 @@
 				  	</a>				    
 				    <div id="collapse3" class="panel-collapse collapse">
 				      <ul class="list-group">
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">One</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="TFWORDS" class="list-group-item" onclick="return false;">News</a>
 				      </ul>
 				    </div>
 				  </div>
@@ -85,9 +86,7 @@
 				  	</a>				    
 				    <div id="collapse4" class="panel-collapse collapse">
 				      <ul class="list-group">
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">One</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Two</a>
-				        <a href="#" id="TEMP" class="list-group-item" onclick="return false;">Three</a>
+				        <a href="#" id="TFWORDS" class="list-group-item" onclick="return false;">News</a>
 				      </ul>
 				    </div>
 				  </div>
